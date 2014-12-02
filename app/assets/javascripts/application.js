@@ -38,8 +38,6 @@ var printLine = function(text, counter) {
 };
 
 $(document).ready(function(){
-  console.log('hi')
-
   $('#start-story').click(function(){
     getContent();
   });
