@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
 
   def welcome
-    render text: "Pleased to meet you. Hope you guess my name."
   end
 
 end
