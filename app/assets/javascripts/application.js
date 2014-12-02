@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+var fullText = ""
+
+var getContent = function(){
+  fullText = $('.content');
+}
+
+var displayFirst = function(){
+  $('.story-text').append(fullText);
+}
+
+$(document).ready(function(){
+  // getContent();
+  // displayFirst();
+
+});

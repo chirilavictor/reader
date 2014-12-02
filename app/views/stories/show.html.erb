@@ -10,14 +10,15 @@
   <%= @story.author %>
 </p>
 
-<p>
-  <strong>Content:</strong>
+<p class="content">
   <%= @story.content %>
 </p>
 
-<div class="reading-pane">
-<p class="story-text"></p>
-</div>
 
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>
+
+
+<div class="reading-pane">
+<p class="story-text">hello</p>
+</div>
