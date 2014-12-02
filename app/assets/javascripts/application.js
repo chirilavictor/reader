@@ -20,15 +20,41 @@
 var fullText = ""
 
 var getContent = function(){
-  fullText = $('.content');
+  fullText = $('.content').text();
 }
 
 var displayFirst = function(){
-  $('.story-text').append(fullText);
+  // $('.story-text').append(fullText);
+  // for (i = 0; i < fullText.length; i += 30) {
+  var len = fullText.length
+  var counter = 0
+
+  printLines(len, counter);
+      // {$('.story-text').html(fullText.slice(i, i + 30); }, 1000);}
 }
 
-$(document).ready(function(){
-  // getContent();
-  // displayFirst();
+var printLine = function(i){
+  // console.log(i);
+  line = fullText.slice(i, i + 50);
+  console.log(line);
+}
 
+var printLines = function(len, counter){
+  if (counter < len) {
+    line = fullText.slice(counter, counter + 50);
+    $('.story-text').html(line);
+    counter += 50;
+    setTimeout(printLines(len, counter), 1000);
+   }
+}
+
+    // setTimeout(function() {
+    //   printLine(i);
+    // }, 2000);
+
+
+
+$(document).ready(function(){
+  getContent();
+  displayFirst();
 });
