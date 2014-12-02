@@ -2,13 +2,16 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @story.title %>
-</p>
-
-<p>
+  <%= @story.title %>, 
   <strong>Author:</strong>
   <%= @story.author %>
 </p>
+
+
+<div class="reading-pane">
+  <button id="start-story">Start Story</button>
+  <p class="story-text"></p>
+</div>
 
 <p class="content">
   <%= @story.content %>
@@ -19,6 +22,3 @@
 <%= link_to 'Back', stories_path %>
 
 
-<div class="reading-pane">
-<p class="story-text">hello</p>
-</div>

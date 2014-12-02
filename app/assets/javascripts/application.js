@@ -15,30 +15,46 @@
 //= require turbolinks
 //= require_tree .
 
-var fullText = "";
-
 var getContent = function(){
-  fullText = $('.content').text();
+  console.log('hi')
+  var fullText = $('.content').text();
+  displayFirst(fullText);
 };
 
-var printLine = function(len, counter) {
-  line = fullText.slice(counter, counter + 40);
+var displayFirst = function(fullText){
+  // var len = fullText.length;
+  var counter = 0;
+  var timer = setTimeout(function() { printLine(fullText, counter) }, 1250);
+};
+
+var printLine = function(text, counter) {
+  // console.log('hi')
+  line = text.slice(counter, counter + 40);
   $('.story-text').html(line);
   counter += 40;
-  if (counter < len) {   
+  // console.log(counter)
+  // console.log(text.length)
+  // console.log(counter < text.length);
+  if (counter < text.length) {   
     timer = setTimeout(function() { 
-      printLine(len, counter); 
-    }, 1500);
+      printLine(text, counter); 
+    }, 1250);
   }
 };
 
-var displayFirst = function(){
-  var len = fullText.length;
-  var counter = 0;
-  var timer = setTimeout(function() { printLine(len, counter) }, 1500);
-};
-
 $(document).ready(function(){
-  getContent();
-  displayFirst();
+
+  console.log('hi')
+
+  $('#start-story').click(function(e){
+    console.log('hi')
+    e.preventDefault();
+    getContent();
+  });
+
+  // if ($('.content').length > 0) {
+  //   var fullText = $('.content').text();
+  //   displayFirst(fullText);
+  // }
+
 });
