@@ -2,8 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h1, h2 {
+  text-align: center;
+}
+
+.reading-pane {
+  margin-bottom: 75px;
+  margin-top: 75px;
+  text-align: center;  
+}
 
 .story-text {
-  text-align: center;
   font-size: 200%;
+  padding: 40px;
+  border: 2px solid red;
+  border-radius: 60px;
+}
+
+.content {
+  display: none;
 }

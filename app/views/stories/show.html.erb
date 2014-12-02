@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>, 
-  <strong>Author:</strong>
-  <%= @story.author %>
-</p>
+<h1><%= @story.title %></h1>
+<h2>by <%= @story.author %></h2>
+
 
 
 <div class="reading-pane">
   <button id="start-story">Start Story</button>
-  <p class="story-text"></p>
+  <p class="story-text">click 'Start Story' to begin</p>
 </div>
 
 <p class="content">
-  <%= @story.content %>
+  <%= @story.content %>...
 </p>
 
 

@@ -16,39 +16,29 @@
 //= require_tree .
 
 var getContent = function(){
-  console.log('hi')
   var fullText = $('.content').text();
   displayFirst(fullText);
 };
 
 var displayFirst = function(fullText){
-  // var len = fullText.length;
   var counter = 0;
-  var timer = setTimeout(function() { printLine(fullText, counter) }, 1250);
+  var timer = setTimeout(function() { printLine(fullText, counter) }, 1000);
 };
 
 var printLine = function(text, counter) {
-  // console.log('hi')
   line = text.slice(counter, counter + 40);
   $('.story-text').html(line);
   counter += 40;
-  // console.log(counter)
-  // console.log(text.length)
-  // console.log(counter < text.length);
   if (counter < text.length) {   
     timer = setTimeout(function() { 
       printLine(text, counter); 
-    }, 1250);
+    }, 1000);
   }
 };
 
 $(document).ready(function(){
 
-  console.log('hi')
-
-  $('#start-story').click(function(e){
-    console.log('hi')
-    e.preventDefault();
+  $('#start-story').click(function(){
     getContent();
   });
 
