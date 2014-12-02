@@ -21,56 +21,22 @@ var getContent = function(){
   fullText = $('.content').text();
 };
 
-
 var printLine = function(len, counter) {
-  line = fullText.slice(counter, counter + 50);
+  line = fullText.slice(counter, counter + 40);
   $('.story-text').html(line);
-  counter += 50;
+  counter += 40;
   if (counter < len) {   
     timer = setTimeout(function() { 
       printLine(len, counter); 
-    }, 200);
+    }, 1500);
   }
 };
 
 var displayFirst = function(){
   var len = fullText.length;
   var counter = 0;
-  var timer = setTimeout(function() { printLine(len, counter) }, 200);
+  var timer = setTimeout(function() { printLine(len, counter) }, 1500);
 };
-
-//   // $('.story-text').append(fullText);
-//   // for (i = 0; i < fullText.length; i += 30) {
-  // var len = fullText.length
-//   // console.log('hi')
-//   var counter = 0
-//   while (counter < len) {
-//     // console.log('hello');
-//     setTimeout(printLines(len, counter), 1000);
-//     counter += 50;
-//   }
-
-  // printLines(len, counter);
-      // {$('.story-text').html(fullText.slice(i, i + 30); }, 1000);}
-// }
-
-// var printLine = function(i){
-//   // console.log(i);
-//   line = fullText.slice(i, i + 50);
-//   console.log(line);
-// }
-
-// var printLines = function(len, counter){
-//   // console.log('aloha')
-//   line = fullText.slice(counter, counter + 50);
-//   $('.story-text').html(line);
-// }
-
-    // setTimeout(function() {
-    //   printLine(i);
-    // }, 2000);
-
-
 
 $(document).ready(function(){
   getContent();
