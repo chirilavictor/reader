@@ -1,28 +1,36 @@
-== README
+Reading Racer
+==============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Education game for developing reading speed and comprehension.
 
-Things you may want to cover:
+Currently in early stage development.
 
-* Ruby version
+Users can read stories that are shown in small text selections (30-50 characters) at varying speeds.
 
-* System dependencies
+Progress is recorded and badges are awarded for various achievements.
 
-* Configuration
+Parents/teachers will be able to manage multiple accounts for children, including adding 'scores' for offline reading achievements.
 
-* Database creation
+### Installation
+Reading Racer is written in Ruby 2.1.3/Rails 4.1.6. To set up:
 
-* Database initialization
+```
+git clone https://github.com/jbwhite/reader.git
+```
 
-* How to run the test suite
+Run bundle:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bundle install
+```
 
-* Deployment instructions
+Start the server:
 
-* ...
+```
+rails s
+```
 
+### Development status
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Reading racer is in early prototype stage of development. The most recent stable version is deployed here: https://readingracer.herokuapp.com/.
+

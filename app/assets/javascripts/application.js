@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
+var delay = 4000
+
 var getContent = function(){
   var fullText = $('.content').text();
   displayFirst(fullText);
@@ -23,7 +25,7 @@ var getContent = function(){
 
 var displayFirst = function(fullText){
   var counter = 0;
-  var timer = setTimeout(function() { printLine(fullText, counter) }, 1000);
+  var timer = setTimeout(function() { printLine(fullText, counter) }, delay);
 };
 
 var printLine = function(text, counter) {
@@ -33,7 +35,7 @@ var printLine = function(text, counter) {
   if (counter < text.length) {   
     timer = setTimeout(function() { 
       printLine(text, counter); 
-    }, 1000);
+    }, delay);
   }
 };
 
