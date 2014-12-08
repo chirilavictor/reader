@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-var delay = 500
+var delay = 1750
 
 var getContent = function(){
   var fullText = $('.content').text();
