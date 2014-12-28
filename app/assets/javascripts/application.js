@@ -60,6 +60,17 @@ function beginDisplay(story) {
 //   return 4000;
 // }
 
+function nextLine() {
+  displayLine(story, bookmark)
+  // need to check for exceeding story length
+}
+
+function lastLine() {
+  bookmark -= 2
+  displayLine(story, bookmark)
+  // need to check for <0
+}
+
 function displayLine(text, counter) {
     line = text[counter];
     $('.story-text').html(line);
@@ -87,6 +98,7 @@ function setSpeed(rate) {
 
 function stopStory() {
   stop = true;
+  $('#start-story').html('Resume');
 }
 
 
@@ -99,6 +111,8 @@ function startStory() {
 function setListeners() {
     $('#start-story').on("click", startStory);
     $('#stop-story').on("click", stopStory);
+    $('#next-line').on("click", nextLine);
+    $('#last-line').on("click", lastLine);
     $('.speed-setting').on("click", function(){
       setSpeed($(this).attr('value'));
     });
