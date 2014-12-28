@@ -51,7 +51,8 @@ function beginDisplay(story) {
     else {
     var counter = bookmark
     }
-  var timer = setTimeout(function() { displayLine(story, counter) }, delay);
+  displayLine(story, counter)
+  // var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
 
 // var setDelay = function(delay) {
@@ -64,7 +65,7 @@ function displayLine(text, counter) {
     $('.story-text').html(line);
     counter += 1;
     if (counter < text.length && stop === false) {   
-      timer = setTimeout(function() { 
+      setTimeout(function() { 
         displayLine(text, counter); 
       }, delay);
     }
