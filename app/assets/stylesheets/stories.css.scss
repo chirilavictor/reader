@@ -7,7 +7,7 @@ h1, h2 {
 }
 
 button {
-  font-size: 1.25em;
+  font-size: 1.1em;
   border-radius: 15px;
   margin: 5px;
   padding: 10px;
@@ -41,8 +41,11 @@ button {
 }
 
 .story-text {
+  display: inline-block;
+  min-width: 700px;
   font-size: 200%;
   padding: 40px;
+  margin: 20px;
   border: 2px solid red;
   border-radius: 60px;
 }
