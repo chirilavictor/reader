@@ -16,9 +16,11 @@
 //= require turbolinks
 //= require_tree .
 
-var delay = 1750
+var delay = 2000;
+var stop = false;
+var bookmark;
 
-var getContent = function(){
+function getContent() {
   var fullText = $('.content').text();
   arrayText = fullText.split(" ")
   var storyArray = []
@@ -42,9 +44,13 @@ var getContent = function(){
   return storyArray
 };
 
-var beginDisplay = function(story){
-  var counter = 0;
-  // var delay = setDelay()
+function beginDisplay(story) {
+  if (typeof(bookmark) == 'undefined') {
+    var counter = 0;
+  }
+    else {
+    var counter = bookmark
+    }
   var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
 
@@ -53,16 +59,49 @@ var beginDisplay = function(story){
 //   return 4000;
 // }
 
-var displayLine = function(text, counter) {
-  line = text[counter];
-  $('.story-text').html(line);
-  counter += 1;
-  if (counter < text.length) {   
-    timer = setTimeout(function() { 
-      displayLine(text, counter); 
-    }, delay);
-  }
+function displayLine(text, counter) {
+    line = text[counter];
+    $('.story-text').html(line);
+    counter += 1;
+    if (counter < text.length && stop === false) {   
+      timer = setTimeout(function() { 
+        displayLine(text, counter); 
+      }, delay);
+    }
+    else {
+      bookmark = counter;
+    }
+
 };
+
+function setSpeed(rate) {
+  if (typeof(rate) == 'undefined') {
+    delay = 1000;
+  }
+  else {
+    delay = rate;
+  }
+
+  }
+
+function stopStory() {
+  stop = true;
+}
+
+
+function startStory() {
+    stop = false;
+    story = getContent();
+    beginDisplay(story);
+}
+
+function setListeners() {
+    $('#start-story').on("click", startStory);
+    $('#stop-story').on("click", stopStory);
+    $('.speed-setting').on("click", function(){
+      setSpeed($(this).attr('value'));
+    });
+  };
 
 // var displayLine = function(text, counter) {
 //   line = text.slice(counter, counter + 40);
@@ -76,10 +115,8 @@ var displayLine = function(text, counter) {
 // };
 
 $(document).ready(function(){
-  $('#start-story').click(function(){
-    story = getContent();
-    beginDisplay(story);
-  });
+  setSpeed();
+  setListeners();
 
   // if ($('.content').length > 0) {
   //   var fullText = $('.content').text();

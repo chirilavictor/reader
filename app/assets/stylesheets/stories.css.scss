@@ -6,6 +6,34 @@ h1, h2 {
   text-align: center;
 }
 
+button {
+  font-size: 1.25em;
+  border-radius: 15px;
+  margin: 5px;
+  padding: 10px;
+  color: white;
+}
+
+#start-story {
+  background: black;
+}
+
+#stop-story {
+  background: red;
+}
+
+#read-slow {
+  background: green;
+}
+
+#read-medium {
+  background: blue;  
+}
+
+#read-fast {
+  background: orange;  
+}
+
 .reading-pane {
   margin-bottom: 75px;
   margin-top: 75px;
