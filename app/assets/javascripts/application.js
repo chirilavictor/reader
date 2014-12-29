@@ -87,15 +87,44 @@ function displayLine(text, counter) {
 };
 
 function setBlurb(delay) {
-  var blurb
+  var blurb;
 
   switch (delay) {
+    case 20000:
+      blurb = "Slugs are awesome!"
+      break;
+    case 18000:
+      blurb = "Sloths are awesome!"
+      break;
+    case 15000:
+      blurb = "Turtles are awesome!"
+      break;
+    case 12000:
+      blurb = "Snakes are awesome!"
+      break;
+    case 9000:
+      blurb = "Lizards are awesome!"
+      break;
+    case 7000:
+      blurb = "Mice are awesome!"
+      break;
     case 5000:
-      blurb = "Rabbits are pretty darned fast!"
+      blurb = "Rabbits are awesome!"
+      break;
+    case 4000:
+      blurb = "Dogs are awesome!"
+      break;
+    case 3000:
+      blurb = "Horses are awesome!"
+      break;
+    case 2000:
+      blurb = "Cheetahs are awesome!"
+      break;
+    case 1000:
+      blurb = "Peregrine falcons are awesome!"
       break;
     default:
       blurb = "Something went wrong with setting the blurb."
-
   }
 
   $('#speed-blurb').html(blurb);
@@ -116,13 +145,13 @@ function stopStory() {
   stop = true;
   $('#start-story').show();
   $('#start-story').html('Resume');
+  $('.navigation').show(); 
   $('#stop-story').hide();
 }
 
-
 function startStory() {
     stop = false;
-    $('.navigation').show(); // ideally this should run only once per page load
+    $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
     $('#stop-story').show();
     $('#start-story').hide();
     story = getContent();
