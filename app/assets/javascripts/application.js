@@ -18,6 +18,7 @@
 
 var delay = 2000;
 var stop = false;
+var story
 var bookmark;
 
 function getContent() {
@@ -44,14 +45,14 @@ function getContent() {
   return storyArray
 };
 
-function beginDisplay(story) {
+function beginDisplay() {
   if (typeof(bookmark) == 'undefined') {
     var counter = 0;
   }
     else {
     var counter = bookmark
   }
-  displayLine(story, counter)
+  displayLine(counter)
   // var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
 
@@ -61,23 +62,30 @@ function beginDisplay(story) {
 // }
 
 function nextLine() {
-  displayLine(story, bookmark)
+  displayLine(bookmark)
   // need to check for exceeding story length
 }
 
 function lastLine() {
-  bookmark -= 2
-  displayLine(story, bookmark)
+  if (bookmark > 1) {
+    bookmark -= 2
+    displayLine(bookmark);
+  }
+
   // need to check for <0
 }
 
-function displayLine(text, counter) {
-    line = text[counter];
+function displayLine(counter) {
+    console.log(counter);
+    console.log(story.length )
+    line = story[counter];
     $('.story-text').html(line);
-    counter += 1;
-    if (counter < text.length && stop === false) {   
+    if (counter < story.length - 1) {
+      counter += 1;
+    }
+    if (counter < story.length - 1 && stop === false) {   
       setTimeout(function() { 
-        displayLine(text, counter); 
+        displayLine(counter); 
       }, delay);
     }
     else {
@@ -155,7 +163,7 @@ function startStory() {
     $('#stop-story').show();
     $('#start-story').hide();
     story = getContent();
-    beginDisplay(story);
+    beginDisplay();
 }
 
 function setListeners() {
