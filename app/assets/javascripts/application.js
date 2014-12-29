@@ -18,7 +18,7 @@
 
 var delay = 2000;
 var stop = false;
-var story
+var story;
 var bookmark;
 
 function getContent() {
@@ -45,14 +45,14 @@ function getContent() {
   return storyArray
 };
 
-function beginDisplay() {
+function getCounter() {
   if (typeof(bookmark) == 'undefined') {
     var counter = 0;
   }
     else {
     var counter = bookmark
   }
-  displayLine(counter)
+  return counter
   // var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
 
@@ -155,13 +155,30 @@ function stopStory() {
   $('#stop-story').hide();
 }
 
+
+function manualRead() {
+  stop = true
+  $('.navigation').show();
+  // var counter = getCounter();
+
+  displayLine(getCounter());
+}
+
+function autoRead() {
+  $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
+  $('#stop-story').show();
+  $('#start-story').hide();
+  displayLine(getCounter());
+}
+
 function startStory() {
     stop = false;
-    $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
-    $('#stop-story').show();
-    $('#start-story').hide();
-    story = getContent();
-    beginDisplay();
+    if (delay == 0) {
+      manualRead();
+    }
+    else {
+      autoRead()
+    }
 }
 
 function setListeners() {
@@ -169,6 +186,7 @@ function setListeners() {
     $('#stop-story').on("click", stopStory);
     $('#next-line').on("click", nextLine);
     $('#last-line').on("click", lastLine);
+    $('#btn-manual').on("click", manualRead);
     $('.speed-setting').on("click", function(){
       setSpeed($(this).attr('value'));
     });
@@ -188,6 +206,8 @@ function setListeners() {
 $(document).ready(function(){
   setSpeed();
   setListeners();
+  story = getContent();
+
 
   // if ($('.content').length > 0) {
   //   var fullText = $('.content').text();
