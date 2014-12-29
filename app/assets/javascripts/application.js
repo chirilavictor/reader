@@ -50,7 +50,7 @@ function beginDisplay(story) {
   }
     else {
     var counter = bookmark
-    }
+  }
   displayLine(story, counter)
   // var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
@@ -86,24 +86,45 @@ function displayLine(text, counter) {
 
 };
 
+function setBlurb(delay) {
+  var blurb
+
+  switch (delay) {
+    case 5000:
+      blurb = "Rabbits are pretty darned fast!"
+      break;
+    default:
+      blurb = "Something went wrong with setting the blurb."
+
+  }
+
+  $('#speed-blurb').html(blurb);
+
+}
+
 function setSpeed(rate) {
   if (typeof(rate) == 'undefined') {
-    delay = 1000;
+    delay = 5000;
   }
   else {
     delay = rate;
   }
-
-  }
+  setBlurb(parseInt(delay));
+}
 
 function stopStory() {
   stop = true;
+  $('#start-story').show();
   $('#start-story').html('Resume');
+  $('#stop-story').hide();
 }
 
 
 function startStory() {
     stop = false;
+    $('.navigation').show(); // ideally this should run only once per page load
+    $('#stop-story').show();
+    $('#start-story').hide();
     story = getContent();
     beginDisplay(story);
 }

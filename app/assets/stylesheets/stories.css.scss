@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background: #EEEEEE;
+}
+
 h1, h2 {
   text-align: center;
 }
@@ -14,68 +18,33 @@ button {
   color: white;
 }
 
+.controls {
+  width: 700px;
+  margin: 0 auto;
+}
+
 #start-story {
-  background: black;
+  background: #555555;
 }
 
 #stop-story {
-  background: red;
+  background: #AAAAAA;
+  display: none;
 }
 
 #next-line {
-  background: gray;
+  background: green;
   color: yellow;
+  display: none;
+  float: right;
 }
 
 #last-line {
-  background: gray;
+  background: green;
   color: yellow;
+  display: none;
+  float: left;
 }
-
-#btn-slug {
-  background: #000D5B;
-}
-
-#btn-sloth {
-  background: #082AFB;
-}
-
-#btn-turtle {
-  background: #00648F;
-}
-
-#btn-snake {
-  background: #009C3F;
-}
-
-#btn-lizard {
-  background: #003D19;
-}
-
-#btn-mouse {
-  background: #89F800;
-}
-
-#btn-rabbit {
-  background: #E2FD00;
-}
-
-#btn-dog {
-  background: #FF8700;
-}
-
-#btn-horse {
-  background: #9F5400;
-}
-
-#btn-cheetah {
-  background: #C42500;
-}
-
-#btn-falcon {
-  background: #430D00;
-}
-
 
 .reading-pane {
   margin-bottom: 75px;
@@ -96,3 +65,4 @@ button {
 .content {
   display: none;
 }
+
