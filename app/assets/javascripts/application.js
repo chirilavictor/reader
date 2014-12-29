@@ -63,7 +63,6 @@ function beginDisplay() {
 
 function nextLine() {
   displayLine(bookmark)
-  // need to check for exceeding story length
 }
 
 function lastLine() {
@@ -71,19 +70,15 @@ function lastLine() {
     bookmark -= 2
     displayLine(bookmark);
   }
-
-  // need to check for <0
 }
 
 function displayLine(counter) {
-    console.log(counter);
-    console.log(story.length )
     line = story[counter];
     $('.story-text').html(line);
     if (counter < story.length - 1) {
       counter += 1;
     }
-    if (counter < story.length - 1 && stop === false) {   
+    if (counter < story.length && stop === false) {   
       setTimeout(function() { 
         displayLine(counter); 
       }, delay);
@@ -130,6 +125,9 @@ function setBlurb(delay) {
       break;
     case 1000:
       blurb = "Peregrine falcons are awesome!"
+      break;
+    case 0:
+      blurb = "Click arrows to read the story."
       break;
     default:
       blurb = "Something went wrong with setting the blurb."
