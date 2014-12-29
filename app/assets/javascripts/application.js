@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-var delay = 2000;
+var delay;
 var stop = false;
 var story;
 var bookmark;
@@ -33,15 +33,6 @@ function getContent() {
     }
     storyArray.push(line);
   }
-  // for (i = 0; i < arrayText.length; i++){
-  //   line = ""
-  //   while (line.length < 40) {
-  //     line += arrayText[i];
-  //     line += " ";
-  //     i += 1
-  //   }
-
-  // }
   return storyArray
 };
 
@@ -53,24 +44,7 @@ function getCounter() {
     var counter = bookmark
   }
   return counter
-  // var timer = setTimeout(function() { displayLine(story, counter) }, delay);
 };
-
-// var setDelay = function(delay) {
-//   console.log(delay);
-//   return 4000;
-// }
-
-function nextLine() {
-  displayLine(bookmark)
-}
-
-function lastLine() {
-  if (bookmark > 1) {
-    bookmark -= 2
-    displayLine(bookmark);
-  }
-}
 
 function displayLine(counter) {
     line = story[counter];
@@ -88,6 +62,69 @@ function displayLine(counter) {
     }
 
 };
+
+function nextLine() {
+  displayLine(bookmark)
+}
+
+function lastLine() {
+  if (bookmark > 1) {
+    bookmark -= 2
+    displayLine(bookmark);
+  }
+}
+
+function setSpeed(rate) {
+  if (typeof(rate) == 'undefined') {
+    delay = 2000;
+  }
+  else {
+    delay = rate;
+  }
+  setBlurb(parseInt(delay));
+}
+
+function startStory() {
+    stop = false;
+    if (delay == 0) {
+      manualRead();
+    }
+    else {
+      autoRead()
+    }
+}
+
+function manualRead() {
+  stop = true
+  $('.navigation').show();
+  displayLine(getCounter());
+}
+
+function autoRead() {
+  $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
+  $('#stop-story').show();
+  $('#start-story').hide();
+  displayLine(getCounter());
+}
+
+function stopStory() {
+  stop = true;
+  $('#start-story').show();
+  $('#start-story').html('Resume');
+  $('.navigation').show(); 
+  $('#stop-story').hide();
+}
+
+function setListeners() {
+    $('#start-story').on("click", startStory);
+    $('#stop-story').on("click", stopStory);
+    $('#next-line').on("click", nextLine);
+    $('#last-line').on("click", lastLine);
+    $('#btn-manual').on("click", manualRead);
+    $('.speed-setting').on("click", function(){
+      setSpeed($(this).attr('value'));
+    });
+  };
 
 function setBlurb(delay) {
   var blurb;
@@ -114,16 +151,16 @@ function setBlurb(delay) {
     case 5000:
       blurb = "Rabbits are awesome!"
       break;
-    case 4000:
+    case 3000:
       blurb = "Dogs are awesome!"
       break;
-    case 3000:
+    case 2000:
       blurb = "Horses are awesome!"
       break;
-    case 2000:
+    case 1000:
       blurb = "Cheetahs are awesome!"
       break;
-    case 1000:
+    case 500:
       blurb = "Peregrine falcons are awesome!"
       break;
     case 0:
@@ -137,81 +174,9 @@ function setBlurb(delay) {
 
 }
 
-function setSpeed(rate) {
-  if (typeof(rate) == 'undefined') {
-    delay = 5000;
-  }
-  else {
-    delay = rate;
-  }
-  setBlurb(parseInt(delay));
-}
-
-function stopStory() {
-  stop = true;
-  $('#start-story').show();
-  $('#start-story').html('Resume');
-  $('.navigation').show(); 
-  $('#stop-story').hide();
-}
-
-
-function manualRead() {
-  stop = true
-  $('.navigation').show();
-  // var counter = getCounter();
-
-  displayLine(getCounter());
-}
-
-function autoRead() {
-  $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
-  $('#stop-story').show();
-  $('#start-story').hide();
-  displayLine(getCounter());
-}
-
-function startStory() {
-    stop = false;
-    if (delay == 0) {
-      manualRead();
-    }
-    else {
-      autoRead()
-    }
-}
-
-function setListeners() {
-    $('#start-story').on("click", startStory);
-    $('#stop-story').on("click", stopStory);
-    $('#next-line').on("click", nextLine);
-    $('#last-line').on("click", lastLine);
-    $('#btn-manual').on("click", manualRead);
-    $('.speed-setting').on("click", function(){
-      setSpeed($(this).attr('value'));
-    });
-  };
-
-// var displayLine = function(text, counter) {
-//   line = text.slice(counter, counter + 40);
-//   $('.story-text').html(line);
-//   counter += 40;
-//   if (counter < text.length) {   
-//     timer = setTimeout(function() { 
-//       displayLine(text, counter); 
-//     }, delay);
-//   }
-// };
-
 $(document).ready(function(){
   setSpeed();
   setListeners();
   story = getContent();
-
-
-  // if ($('.content').length > 0) {
-  //   var fullText = $('.content').text();
-  //   beginDisplay(fullText);
-  // }
 
 });
