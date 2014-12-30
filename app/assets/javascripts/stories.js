@@ -4,7 +4,10 @@ var story;
 var bookmark;
 
 function Story(delay) {
+  // need default for delay
+  this.bookmark = 0;
   this.stop = false;
+  this.content = getContent()
 
   Object.defineProperty(this, "delay", {
     get: function() {
@@ -19,7 +22,7 @@ function Story(delay) {
 
 }
 
-function getContent() {
+Story.prototype.getContent = function() {
   // change to AJAX request to get content array from rails
   var fullText = $('.content').text();
   arrayText = fullText.split(" ")
@@ -35,23 +38,38 @@ function getContent() {
   return storyArray
 };
 
-function getCounter() {
-  if (typeof(bookmark) == 'undefined') {
-    var counter = 0;
-  }
-    else {
-    var counter = bookmark
-  }
-  return counter
-};
+// function getContent() {
+//   // change to AJAX request to get content array from rails
+//   var fullText = $('.content').text();
+//   arrayText = fullText.split(" ")
+//   var storyArray = []
+//   while (arrayText.length > 0) {
+//     line = ""
+//     while (line.length < 40 && arrayText.length > 0) {
+//       line += arrayText.shift();
+//       line += " ";
+//     }
+//     storyArray.push(line);
+//   }
+//   return storyArray
+// };
+
+// function getCounter() {
+//   if (story.bookmark === undefined) {
+//     return 0;
+//   }
+//     else {
+//     return story.bookmark
+//   }
+// };
 
 function displayLine(counter) {
-    line = story[counter];
-    $('.story-text').html(line);
-    if (counter < story.length - 1) {
+    // line = story[counter];
+    $('.story-text').html(story.content[counter]);
+    if (counter < story.content.length - 1) {
       counter += 1;
     }
-    if (counter < story.length && stop === false) {   
+    if (counter < story.content.length && story.stop === false) {   
       setTimeout(function() { 
         displayLine(counter); 
       }, delay);
@@ -73,18 +91,18 @@ function lastLine() {
   }
 }
 
-function setSpeed(rate) {
-  if (typeof(rate) == 'undefined') {
-    delay = 2000;
-  }
-  else {
-    delay = rate;
-  }
-  setBlurb(parseInt(delay));
-}
+// function setSpeed(rate) {
+//   if (typeof(rate) == 'undefined') {
+//     delay = 2000;
+//   }
+//   else {
+//     delay = rate;
+//   }
+//   setBlurb(parseInt(delay));
+// }
 
 function startStory() {
-    stop = false;
+    story.stop = false;
     if (delay == 0) {
       manualRead();
     }
@@ -94,9 +112,9 @@ function startStory() {
 }
 
 function manualRead() {
-  stop = true
+  story.stop = true
   $('.navigation').show();
-  displayLine(getCounter());
+  displayLine(story.bookmark);
 }
 
 function autoRead() {
@@ -121,15 +139,15 @@ function setListeners() {
     $('#last-line').on("click", lastLine);
     $('#btn-manual').on("click", manualRead);
     $('.speed-setting').on("click", function(){
-      story1.delay = ($(this).attr('value'));
-      setBlurb(story1.delay);
+      story.delay = ($(this).attr('value'));
+      setBlurb();
     });
   };
 
-function setBlurb(delay) {
+function setBlurb() {
   var blurb;
 
-  switch (delay) {
+  switch (story.delay) {
     case 20000:
       blurb = "Slugs are awesome!"
       break;
@@ -175,11 +193,9 @@ function setBlurb(delay) {
 }
 
 $(document).ready(function(){
-  // setSpeed();
   setListeners();
-  // story = getContent();
-  story1 = new Story(2000);
-  story1.content = getContent();
-  setBlurb(story1.delay);
+  story = new Story(2000);
+  story.content = getContent(); // add to constructor function
+  setBlurb(story.delay);
 
 });
