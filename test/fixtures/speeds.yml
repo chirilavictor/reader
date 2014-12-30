@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  animal: MyString
+  blurb: MyString
+  delay: 1
+
+two:
+  animal: MyString
+  blurb: MyString
+  delay: 1
