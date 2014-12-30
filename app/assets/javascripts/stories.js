@@ -1,26 +1,9 @@
-// var delay;
-// var stop = false;
-// var story;
-// var bookmark;
-
 function Story(delay) {
-  // need default for delay
   this.bookmark = 0;
   this.stop = false;
+  this.delay = 2000;
   this.content = this.getContent();
   this.length = this.content.length;
-
-  Object.defineProperty(this, "delay", {
-    get: function() {
-      return delay;
-    },
-    set: function(newDelay) {
-      delay = parseInt(newDelay);
-    },
-    enumerable: true,
-    configureable: true
-  });
-
 }
 
 Story.prototype = {
@@ -44,6 +27,7 @@ Story.prototype = {
 
 }
 
+
 function displayLine(counter) {
     $('.story-text').html(story.content[counter]);
     if (counter < story.length - 1) {
@@ -65,8 +49,8 @@ function nextLine() {
 }
 
 function lastLine() {
-  if (bookmark > 1) {
-    bookmark -= 2
+  if (story.bookmark > 1) {
+    story.bookmark -= 2
     displayLine(story.bookmark);
   }
 }
@@ -95,7 +79,7 @@ function autoRead() {
 }
 
 function stopStory() {
-  stop = true;
+  story.stop = true;
   $('#start-story').show();
   $('#start-story').html('Resume');
   $('.navigation').show(); 
@@ -109,7 +93,7 @@ function setListeners() {
     $('#last-line').on("click", lastLine);
     $('#btn-manual').on("click", manualRead);
     $('.speed-setting').on("click", function(){
-      story.delay = ($(this).attr('value'));
+      story.delay = parseInt(($(this).attr('value')));
       setBlurb();
     });
   };
@@ -163,9 +147,7 @@ function setBlurb() {
 }
 
 $(document).ready(function(){
+  story = new Story();
   setListeners();
-  story = new Story(2000);
-  // story.content = getContent(); // add to constructor function
-  setBlurb(story.delay);
-
+  setBlurb();
 });
