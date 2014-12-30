@@ -1,4 +1,4 @@
-function Story(delay) {
+function Story() {
   this.bookmark = 0;
   this.stop = false;
   this.delay = 2000;
