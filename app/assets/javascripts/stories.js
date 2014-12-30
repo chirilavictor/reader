@@ -23,41 +23,38 @@ Story.prototype = {
       storyArray.push(line);
     }
     return storyArray
+  },
+
+  displayLine: function() {
+    $('.story-text').html(story.content[story.bookmark]);
+    if (story.bookmark < story.length - 1) {
+      story.bookmark += 1;
+    }
+    if (story.bookmark < story.length && story.stop === false) {
+      setTimeout(function() { 
+        story.displayLine(); 
+      }, story.delay);
+    }
+
   }
 
 }
 
 
-function displayLine(counter) {
-    $('.story-text').html(story.content[counter]);
-    if (counter < story.length - 1) {
-      counter += 1;
-    }
-    if (counter < story.length && story.stop === false) {   
-      setTimeout(function() { 
-        displayLine(counter); 
-      }, story.delay);
-    }
-    else {
-      story.bookmark = counter;
-    }
-
-};
-
 function nextLine() {
-  displayLine(story.bookmark)
+  story.displayLine()
 }
 
 function lastLine() {
   if (story.bookmark > 1) {
     story.bookmark -= 2
-    displayLine(story.bookmark);
+    story.displayLine();
   }
 }
 
 function startStory() {
     story.stop = false;
-    if (story.delay == 0) {
+    if (story.delay === 0) {
       manualRead();
     }
     else {
@@ -68,14 +65,14 @@ function startStory() {
 function manualRead() {
   story.stop = true
   $('.navigation').show();
-  displayLine(story.bookmark);
+  story.displayLine();
 }
 
 function autoRead() {
   $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
   $('#stop-story').show();
   $('#start-story').hide();
-  displayLine(story.bookmark);
+  story.displayLine();
 }
 
 function stopStory() {
