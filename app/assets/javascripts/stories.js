@@ -1,13 +1,14 @@
-var delay;
-var stop = false;
-var story;
-var bookmark;
+// var delay;
+// var stop = false;
+// var story;
+// var bookmark;
 
 function Story(delay) {
   // need default for delay
   this.bookmark = 0;
   this.stop = false;
-  this.content = this.getContent()
+  this.content = this.getContent();
+  this.length = this.content.length;
 
   Object.defineProperty(this, "delay", {
     get: function() {
@@ -43,75 +44,36 @@ Story.prototype = {
 
 }
 
-// Story.prototype.getContent = function() {
-// };
-
-// function getContent() {
-//   // change to AJAX request to get content array from rails
-//   var fullText = $('.content').text();
-//   arrayText = fullText.split(" ")
-//   var storyArray = []
-//   while (arrayText.length > 0) {
-//     line = ""
-//     while (line.length < 40 && arrayText.length > 0) {
-//       line += arrayText.shift();
-//       line += " ";
-//     }
-//     storyArray.push(line);
-//   }
-//   return storyArray
-// };
-
-// function getCounter() {
-//   if (story.bookmark === undefined) {
-//     return 0;
-//   }
-//     else {
-//     return story.bookmark
-//   }
-// };
-
 function displayLine(counter) {
-    // line = story[counter];
     $('.story-text').html(story.content[counter]);
-    if (counter < story.content.length - 1) {
+    if (counter < story.length - 1) {
       counter += 1;
     }
-    if (counter < story.content.length && story.stop === false) {   
+    if (counter < story.length && story.stop === false) {   
       setTimeout(function() { 
         displayLine(counter); 
-      }, delay);
+      }, story.delay);
     }
     else {
-      bookmark = counter;
+      story.bookmark = counter;
     }
 
 };
 
 function nextLine() {
-  displayLine(bookmark)
+  displayLine(story.bookmark)
 }
 
 function lastLine() {
   if (bookmark > 1) {
     bookmark -= 2
-    displayLine(bookmark);
+    displayLine(story.bookmark);
   }
 }
 
-// function setSpeed(rate) {
-//   if (typeof(rate) == 'undefined') {
-//     delay = 2000;
-//   }
-//   else {
-//     delay = rate;
-//   }
-//   setBlurb(parseInt(delay));
-// }
-
 function startStory() {
     story.stop = false;
-    if (delay == 0) {
+    if (story.delay == 0) {
       manualRead();
     }
     else {
@@ -129,7 +91,7 @@ function autoRead() {
   $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
   $('#stop-story').show();
   $('#start-story').hide();
-  displayLine(getCounter());
+  displayLine(story.bookmark);
 }
 
 function stopStory() {
