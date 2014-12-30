@@ -26,16 +26,16 @@ Story.prototype = {
   },
 
   displayLine: function() {
-    $('.story-text').html(story.content[story.bookmark]);
-    if (story.bookmark < story.length - 1) {
-      story.bookmark += 1;
+    $('.story-text').html(this.content[this.bookmark]);
+    if (this.bookmark < this.length - 1) {
+      this.bookmark += 1;
     }
-    if (story.bookmark < story.length && story.stop === false) {
+    if (this.bookmark < this.length && this.stop === false) {
+      currentStory = this;
       setTimeout(function() { 
-        story.displayLine(); 
-      }, story.delay);
+        currentStory.displayLine(); 
+      }, currentStory.delay);
     }
-
   }
 
 }
