@@ -26,22 +26,12 @@
     <h3>Choose your reading speed:</h3>
 
     <br>
-    <button id="btn-slug" class="speed-setting" value="20000">Slug</button>
-    <button id="btn-sloth" class="speed-setting" value="18000">Sloth</button>
-    <button id="btn-turtle" class="speed-setting" value="15000">Turtle</button>
-    <button id="btn-snake" class="speed-setting" value="12000">Snake</button>
-    <button id="btn-lizard" class="speed-setting" value="9000">Lizard</button>
-    <button id="btn-mouse" class="speed-setting" value="7000">Mouse</button>
-    <br>
-    <button id="btn-rabbit" class="speed-setting" value="5000">Rabbit</button>
-    <button id="btn-dog" class="speed-setting" value="3000">Dog</button>
-    <button id="btn-horse" class="speed-setting" value="2000">Horse</button>
-    <button id="btn-cheetah" class="speed-setting" value="1000">Cheetah</button>
-    <button id="btn-falcon" class="speed-setting" value="500">Peregrine Falcon</button>
-    <br>
-    <button id="btn-manual" class="speed-setting" value="0">Read Manually</button>
+    <% @speeds.each do |speed| %>
+          <button id="btn-<%= speed.animal.gsub(" ", "-") %>" class="speed-setting" value="<%= speed.delay %>" data-animal="<%= speed.animal %>" data-blurb="<%= speed.blurb %>"><%= speed.animal.capitalize %></button>
+    <% end %>
 
     <p id="speed-blurb"></p>
+
   </div>
 
 </div>

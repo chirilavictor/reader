@@ -40,7 +40,14 @@ Story.prototype = {
       }, currentStory.delay);
     }
   }
-
+// ,
+  // setSpeeds: function() {
+  //   var current_story = this
+  //   $.get('/speeds/get_speeds', function(data) {
+  //     current_story.speeds = data;
+  //   });
+  // }
+  // abandoned this approach as asynchronous issues were making it needlessly complicated
 }
 
 
@@ -96,54 +103,11 @@ function setListeners() {
       story.delay = parseInt(($(this).attr('value')));
       setBlurb();
     });
-  };
-
-function setBlurb() {
-  var blurb;
-
-  switch (story.delay) {
-    case 20000:
-      blurb = "Slugs are awesome!"
-      break;
-    case 18000:
-      blurb = "Sloths are awesome!"
-      break;
-    case 15000:
-      blurb = "Turtles are awesome!"
-      break;
-    case 12000:
-      blurb = "Snakes are awesome!"
-      break;
-    case 9000:
-      blurb = "Lizards are awesome!"
-      break;
-    case 7000:
-      blurb = "Mice are awesome!"
-      break;
-    case 5000:
-      blurb = "Rabbits are awesome!"
-      break;
-    case 3000:
-      blurb = "Dogs are awesome!"
-      break;
-    case 2000:
-      blurb = "Horses are awesome!"
-      break;
-    case 1000:
-      blurb = "Cheetahs are awesome!"
-      break;
-    case 500:
-      blurb = "Peregrine falcons are awesome!"
-      break;
-    case 0:
-      blurb = "Click arrows to read the story."
-      break;
-    default:
-      blurb = "Something went wrong with setting the blurb."
   }
 
+function setBlurb() {
+  var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
   $('#speed-blurb').html(blurb);
-
 }
 
 $(document).ready(function(){
