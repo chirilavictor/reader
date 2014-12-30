@@ -7,7 +7,7 @@ function Story(delay) {
   // need default for delay
   this.bookmark = 0;
   this.stop = false;
-  this.content = getContent()
+  this.content = this.getContent()
 
   Object.defineProperty(this, "delay", {
     get: function() {
@@ -22,21 +22,29 @@ function Story(delay) {
 
 }
 
-Story.prototype.getContent = function() {
-  // change to AJAX request to get content array from rails
-  var fullText = $('.content').text();
-  arrayText = fullText.split(" ")
-  var storyArray = []
-  while (arrayText.length > 0) {
-    line = ""
-    while (line.length < 40 && arrayText.length > 0) {
-      line += arrayText.shift();
-      line += " ";
+Story.prototype = {
+  constructor: Story,
+
+  getContent: function() {
+    // change to AJAX request to get content array from rails
+    var fullText = $('.content').text();
+    arrayText = fullText.split(" ")
+    var storyArray = []
+    while (arrayText.length > 0) {
+      line = ""
+      while (line.length < 40 && arrayText.length > 0) {
+        line += arrayText.shift();
+        line += " ";
+      }
+      storyArray.push(line);
     }
-    storyArray.push(line);
+    return storyArray
   }
-  return storyArray
-};
+
+}
+
+// Story.prototype.getContent = function() {
+// };
 
 // function getContent() {
 //   // change to AJAX request to get content array from rails
@@ -195,7 +203,7 @@ function setBlurb() {
 $(document).ready(function(){
   setListeners();
   story = new Story(2000);
-  story.content = getContent(); // add to constructor function
+  // story.content = getContent(); // add to constructor function
   setBlurb(story.delay);
 
 });
