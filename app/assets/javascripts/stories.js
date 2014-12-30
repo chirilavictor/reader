@@ -7,6 +7,9 @@ function Story(delay) {
 }
 
 Story.prototype = {
+  // is it good to have Story accessing jQuery objects
+  // on the page?
+  
   constructor: Story,
 
   getContent: function() {
