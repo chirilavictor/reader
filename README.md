@@ -1,15 +1,14 @@
 Reading Racer
 ==============
 
-Education game for developing reading speed and comprehension.
+Education game for developing reading speed and comprehension. The most recent stable version is deployed here: https://readingracer.herokuapp.com/.
 
-Currently in early stage development.
+Users can read stories that are shown in small text selections (40-55 characters) at varying speeds (represented by various animals). Users can also use arrow keys to manually read through the story.
 
-Users can read stories that are shown in small text selections (30-50 characters) at varying speeds.
+Future enhancements will include user accounts to record progress and award badges. Parents/teachers will be able to manage multiple accounts for children, including adding 'scores' for offline reading achievements.
 
-Progress is recorded and badges are awarded for various achievements.
+![screen shot](racer1.png "Screen image")
 
-Parents/teachers will be able to manage multiple accounts for children, including adding 'scores' for offline reading achievements.
 
 ### Installation
 Reading Racer is written in Ruby 2.1.3/Rails 4.1.6. To set up:
@@ -32,5 +31,5 @@ rails s
 
 ### Development status
 
-Reading racer is in early prototype stage of development. The most recent stable version is deployed here: https://readingracer.herokuapp.com/.
+Reading racer is in early stage development.
 
