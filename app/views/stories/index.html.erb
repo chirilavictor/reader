@@ -1,31 +1,11 @@
-<h1>Listing stories</h1>
+<h1>Choose a Story to Read</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @stories.each do |story| %>
+  <p class="story-list"><%= link_to story.title, story %>, by <%= story.author %></p>
+<% end %>
 
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td><%= story.author %></td>
-        <td><%= story.content.slice(0, 100) %>...</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "Click Here to Read #{story.title}!", story %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<br>
+<br>
 <br>
 
 <%= link_to 'New Story', new_story_path %>

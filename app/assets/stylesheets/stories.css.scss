@@ -8,6 +8,16 @@ body {
 
 h1, h2 {
   text-align: center;
+  color: #FF0000;
+}
+
+a {
+  text-decoration: none;
+  color: #FF00DD;
+}
+
+a:visited {
+  color: #FF0000;
 }
 
 button {
@@ -71,3 +81,7 @@ button {
   display: none;
 }
 
+.story-list {
+  margin-left: 25px;
+  font-size: 1.3em;
+}
