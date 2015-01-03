@@ -1,4 +1,7 @@
-<h1>Choose a Story to Read</h1>
+<h1>Welcome to Reading Racer!</h1>
+<br><br><hr><br><br>
+<h2>Choose a Story to Start Reading</h2>
+<br><br>
 
 <% @stories.each do |story| %>
   <p class="story-list"><%= link_to story.title, story %>, by <%= story.author %></p>
@@ -8,4 +11,3 @@
 <br>
 <br>
 
-<%= link_to 'New Story', new_story_path %>
