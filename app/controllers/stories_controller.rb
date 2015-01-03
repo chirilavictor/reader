@@ -11,7 +11,6 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @speeds = Speed.all
-    p @speeds
   end
 
   # GET /stories/new

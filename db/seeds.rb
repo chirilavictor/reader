@@ -18,7 +18,7 @@ speed_seeds = [
   {delay: 2000, animal: "horse", blurb: "Horses are awesome!"},
   {delay: 1000, animal: "cheetah", blurb: "Cheetahs are awesome!"},
   {delay: 500, animal: "peregrine falcon", blurb: "Peregrine falcons are awesome!"},
-  {delay: 0, animal: nil, blurb: "Click arrows to read the story."}
+  {delay: 0, animal: "Read manually", blurb: "Click arrows to read the story."}
 ]
 
 speed_seeds.each { |item| Speed.create(item) }
