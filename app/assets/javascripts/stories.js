@@ -30,7 +30,7 @@ Story.prototype = {
 
   displayLine: function() {
     $('.story-text').html(this.content[this.bookmark]);
-    if (this.bookmark < this.length - 1) {
+    if (this.bookmark < this.length) {
       this.bookmark += 1;
     }
     if (this.bookmark < this.length && this.stop === false) {
