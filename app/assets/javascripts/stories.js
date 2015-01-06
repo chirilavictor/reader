@@ -98,9 +98,9 @@ function setListeners() {
     $('#stop-story').on("click", stopStory);
     $('#next-line').on("click", nextLine);
     $('#last-line').on("click", lastLine);
-    $('#btn-manual').on("click", manualRead);
     $('.speed-setting').on("click", function(){
       story.delay = parseInt(($(this).attr('value')));
+      if (story.delay === 0) { manualRead(); }
       setBlurb();
     });
   }
