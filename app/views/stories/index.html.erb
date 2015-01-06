@@ -1,10 +1,10 @@
 <h1>Welcome to Reading Racer!</h1>
 <br><br><hr><br><br>
-<h2>Choose a Story to Start Reading</h2>
+<h2>Test your reading skill and speed. Choose a story below to begin.</h2>
 <br><br>
 
 <% @stories.each do |story| %>
-  <p class="story-list"><%= link_to story.title, story %>, by <%= story.author %></p>
+  <p class="story-list"><%= link_to story.title, story %> -- <%= story.author %></p>
 <% end %>
 
 <br>

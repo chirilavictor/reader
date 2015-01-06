@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Home', stories_path %>
+
 
 <h1><%= @story.title %></h1>
-<h2>by <%= @story.author %></h2>
+<h2><%= @story.author %></h2>
 
 
 
@@ -17,13 +19,13 @@
 
   <p>
     <div class="story-text">
-      click 'Start' to begin
+      Pick your speed below then click 'Start'
     </div>
   </p>
 
   <div class="speed-buttons">
 
-    <h3>Choose your reading speed:</h3>
+    <h2>Choose your reading speed:</h2>
 
     <br>
     <% @speeds.each do |speed| %>
@@ -42,7 +44,5 @@
   <%= @story.content %>
 </p>
 
-
-<%= link_to 'Back', stories_path %>
 
 

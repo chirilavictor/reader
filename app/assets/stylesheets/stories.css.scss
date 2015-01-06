@@ -4,6 +4,15 @@
 
 body {
   background: #F5F5F5;
+  background: url('school.png');
+}
+
+div#container {
+  background: #F5F5F5;
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 25px;
+  border-radius: 25px;  
 }
 
 h1, h2 {
