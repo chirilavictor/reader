@@ -8,16 +8,21 @@ body {
 }
 
 div#container {
-  background: #F5F5F5;
+  background: #F0F0F0;
   margin: 30px auto;
   max-width: 800px;
   padding: 25px;
   border-radius: 25px;  
 }
 
-h1, h2 {
+h1 {
   text-align: center;
   color: #FF0000;
+}
+
+h2 {
+  text-align: center;
+  color: #005E00;
 }
 
 a {
