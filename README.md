@@ -1,7 +1,7 @@
 Reading Racer
 ==============
 
-Education game for developing reading speed and comprehension. The most recent stable version is deployed here: https://readingracer.herokuapp.com/.
+Educational game for developing reading speed and comprehension. The most recent stable version is deployed here: https://readingracer.herokuapp.com/.
 
 Users can read stories that are shown in small text selections (40-55 characters) at varying speeds (represented by various animals). Users can also use arrow keys to manually read through the story.
 
