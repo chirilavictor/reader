@@ -7,25 +7,23 @@ function Story() {
 }
 
 Story.prototype = {
-  // is it good to have Story accessing jQuery objects
-  // on the page?
   
   constructor: Story,
 
   getContent: function() {
     // change to AJAX request to get content array from rails
     var fullText = $('.content').text();
-    arrayText = fullText.split(" ")
-    var storyArray = []
+    arrayText = fullText.split(" ");
+    var storyArray = [];
     while (arrayText.length > 0) {
-      line = ""
+      line = "";
       while (line.length < 40 && arrayText.length > 0) {
         line += arrayText.shift();
         line += " ";
       }
       storyArray.push(line);
     }
-    return storyArray
+    return storyArray;
   },
 
   displayLine: function() {
@@ -35,29 +33,19 @@ Story.prototype = {
     }
     if (this.bookmark < this.length && this.stop === false) {
       currentStory = this;
-      setTimeout(function() { 
-        currentStory.displayLine(); 
-      }, currentStory.delay);
+      setTimeout(function() { currentStory.displayLine(); }, currentStory.delay);
     }
   }
-// ,
-  // setSpeeds: function() {
-  //   var current_story = this
-  //   $.get('/speeds/get_speeds', function(data) {
-  //     current_story.speeds = data;
-  //   });
-  // }
-  // abandoned this approach as asynchronous issues were making it needlessly complicated
-}
+};
 
 
 function nextLine() {
-  story.displayLine()
+  story.displayLine();
 }
 
 function lastLine() {
   if (story.bookmark > 1) {
-    story.bookmark -= 2
+    story.bookmark -= 2;
     story.displayLine();
   }
 }
@@ -68,12 +56,12 @@ function startStory() {
       manualRead();
     }
     else {
-      autoRead()
+      autoRead();
     }
 }
 
 function manualRead() {
-  story.stop = true
+  story.stop = true;
   $('.navigation').show();
   story.displayLine();
 }
@@ -89,7 +77,7 @@ function stopStory() {
   story.stop = true;
   $('#start-story').show();
   $('#start-story').html('Resume');
-  $('.navigation').show(); 
+  $('.navigation').show();
   $('#stop-story').hide();
 }
 
@@ -99,7 +87,7 @@ function setListeners() {
     $('#next-line').on("click", nextLine);
     $('#last-line').on("click", lastLine);
     $('.speed-setting').on("click", function(){
-      story.delay = parseInt(($(this).attr('value')));
+      story.delay = parseInt($(this).attr('value'), 10);
       if (story.delay === 0) { manualRead(); }
       setBlurb();
     });
