@@ -13,18 +13,15 @@
     <button id="next-line" class="navigation">--></button>
   </div>
 
-
-  <p>
-    <div class="story-text">
-      Pick your speed below then click 'Start'
-    </div>
-  </p>
+  <div class="story-text">
+    Pick your speed below then click 'Start'
+  </div>  
 
   <div class="speed-buttons">
 
     <h2>Choose your reading speed:</h2>
 
-    <br>
+    <br><br>
     <% @speeds.each do |speed| %>
       <button id="btn-<%= speed.animal.gsub(" ", "-") %>" class="speed-setting" value="<%= speed.delay %>" data-animal="<%= speed.animal %>" data-blurb="<%= speed.blurb %>"><%= speed.animal.capitalize %></button>
     <% end %>

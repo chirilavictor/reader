@@ -6,19 +6,19 @@
   line-height: 18px;
 }
 */
-p, ol, ul, td {
+/*p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
-
-pre {
+*/
+/*pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
-
-a {
+*/
+/*a {
   color: #000;
   &:visited {
     color: #666;
@@ -34,9 +34,10 @@ div {
     margin-bottom: 10px;
   }
 }
-
+*/
 #notice {
   color: green;
+  margin: 0;
 }
 
 .field_with_errors {

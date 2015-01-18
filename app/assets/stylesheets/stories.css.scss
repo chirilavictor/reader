@@ -12,7 +12,7 @@ div#container {
   background: rgba(255,255,255,0.4);
   margin: 30px auto;
   max-width: 800px;
-  padding: 25px;
+  padding: 10px 45px 10px 45px;
   border-radius: 75px;  
 }
 
@@ -23,12 +23,18 @@ h1 {
 }
 
 h1#title {
-    font-family: 'Trade Winds', cursive;
-    text-shadow: 2px 2px #000000;
+  font-family: 'Trade Winds', cursive;
+  text-shadow: 2px 2px #000000;
 }
 
 h2 {
+  font-size: 2em;
   text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+  color: #333333;
+  
 }
 
 a {
@@ -83,16 +89,17 @@ button {
 
 .reading-pane {
   margin-bottom: 75px;
-  margin-top: 75px;
+  margin-top: 25px;
   text-align: center;  
 }
 
 .story-text {
+  font-family: 'Roboto', sans-serif;
   display: inline-block;
   min-width: 700px;
-  font-size: 200%;
+  font-size: 1.9em;
   padding: 40px;
-  margin: 20px;
+  margin: 30px 10px 80px 10px;
   border: 4px groove #FF2222;
   border-radius: 60px;
   background: #FFFFFF;
