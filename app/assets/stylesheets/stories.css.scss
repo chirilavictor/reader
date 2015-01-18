@@ -12,12 +12,17 @@ div#container {
   margin: 30px auto;
   max-width: 800px;
   padding: 25px;
-  border-radius: 25px;  
+  border-radius: 75px;  
 }
 
 h1 {
   text-align: center;
   color: #FF0000;
+  font-size: 3em;
+}
+
+h1#title {
+    font-family: 'Trade Winds', cursive;
 }
 
 h2 {
