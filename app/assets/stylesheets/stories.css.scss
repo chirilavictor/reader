@@ -9,6 +9,7 @@ body {
 
 div#container {
   background: #F0F0F0;
+  background: rgba(255,255,255,0.4);
   margin: 30px auto;
   max-width: 800px;
   padding: 25px;
@@ -23,6 +24,7 @@ h1 {
 
 h1#title {
     font-family: 'Trade Winds', cursive;
+    text-shadow: 2px 2px #000000;
 }
 
 h2 {
@@ -94,7 +96,10 @@ button {
   border: 2px solid red;
   border-radius: 60px;
   background: #FFFFFF;
-}
+  -webkit-box-shadow: 5px 5px 5px 5px rgba(170,170,170,1);
+  -moz-box-shadow: 5px 5px 5px 5px rgba(170,170,170,1);
+  box-shadow: 5px 5px 5px 5px rgba(170,170,170,1);
+  }
 
 .content {
   display: none;
