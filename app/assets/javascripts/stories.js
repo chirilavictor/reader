@@ -52,7 +52,8 @@ function lastLine() {
 
 function startStory() {
     $('#title').hide(500, 'linear');
-    $('.story-text').css({'padding': '80px 40px', 'background': '#FFFFFF'})
+    $('.story-text').css({'padding': '80px 40px', 'background': '#FFFFFF'});
+    $('div#container').css({'background': 'rgba(255,255,255,0.8)'});
     story.stop = false;
     if (story.delay === 0) {
       manualRead();
