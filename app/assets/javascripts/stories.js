@@ -2,29 +2,12 @@ function Story() {
   this.bookmark = 0;
   this.stop = false;
   this.delay = 2000;
-  this.content = this.getContent();
-  this.length = this.content.length;
+  this.content = null;
 }
 
 Story.prototype = {
   
   constructor: Story,
-
-  getContent: function() {
-    // change to AJAX request to get content array from rails
-    var fullText = $('.content').text();
-    arrayText = fullText.split(" ");
-    var storyArray = [];
-    while (arrayText.length > 0) {
-      line = "";
-      while (line.length < 40 && arrayText.length > 0) {
-        line += arrayText.shift();
-        line += " ";
-      }
-      storyArray.push(line);
-    }
-    return storyArray;
-  },
 
   displayLine: function() {
     $('.story-text').html(this.content[this.bookmark]);
@@ -36,7 +19,21 @@ Story.prototype = {
       setTimeout(function() { currentStory.displayLine(); }, currentStory.delay);
     }
   }
+
 };
+
+
+function getContent() {
+  $.ajax({
+    url: '/get_story/' + $('.story-text').attr('id'),
+    data: $('.story-text').attr('id'),
+    type: 'post',
+    success: function(responseData) {
+      story.content = responseData;
+      story.length = responseData.length;
+    }
+  });
+}
 
 
 function nextLine() {
@@ -53,7 +50,7 @@ function lastLine() {
 function startStory() {
     $('#title').hide(500, 'linear');
     $('.story-text').css({'padding': '80px 40px', 'background': '#FFFFFF'});
-    $('div#container').css({'background': 'rgba(255,255,255,0.8)'});
+    $('div#container').css({'background': 'rgba(255,255,255,0.7)'});
     story.stop = false;
     if (story.delay === 0) {
       manualRead();
@@ -73,6 +70,7 @@ function autoRead() {
   $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
   $('#stop-story').show();
   $('#start-story').hide();
+  console.log(story)
   story.displayLine();
 }
 
@@ -97,12 +95,15 @@ function setListeners() {
   }
 
 function setBlurb() {
+  var animal = $('button[value="' + story.delay +'"]').html(); 
   var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
-  $('#speed-blurb').html(blurb);
+  $('#speed-choice').html('Current speed: ' + animal)
+  // $('#speed-blurb').html(blurb);
 }
 
 $(document).ready(function(){
   story = new Story();
+  getContent();
   setListeners();
   setBlurb();
 });

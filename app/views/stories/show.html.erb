@@ -13,13 +13,13 @@
     <button id="next-line" class="navigation">--></button>
   </div>
 
-  <div class="story-text">
+  <div class="story-text" id="<%= @story.id %>">
     Pick your speed below then click 'Start'
   </div>  
 
   <div class="speed-buttons">
 
-    <h2>Choose your reading speed:</h2>
+    <h2 id="speed-choice"></h2>
 
     <br><br>
     <% @speeds.each do |speed| %>
@@ -31,12 +31,6 @@
   </div>
 
 </div>
-
-
-
-<p class="content">
-  <%= @story.content %>
-</p>
 
 
 

@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:show, :get_story, :edit, :update, :destroy]
 
   def index
     @stories = Story.all
@@ -7,6 +7,10 @@ class StoriesController < ApplicationController
 
   def show
     @speeds = Speed.all
+  end
+
+  def get_story
+    render json: @story.get_lines.to_json
   end
 
   def new

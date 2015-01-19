@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'stories#index'
+  post 'get_story/:id' => 'stories#get_story'
 
 
   # Example of regular route:
