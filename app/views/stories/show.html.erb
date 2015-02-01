@@ -19,9 +19,8 @@
 
   <div class="speed-buttons">
 
-    <h2 id="speed-choice"></h2>
+    <h3 id="speed-choice"></h3>
 
-    <br><br>
     <% @speeds.each do |speed| %>
       <button id="btn-<%= speed.animal.gsub(" ", "-") %>" class="speed-setting" value="<%= speed.delay %>" data-animal="<%= speed.animal %>" data-blurb="<%= speed.blurb %>"><%= speed.animal.capitalize %></button>
     <% end %>

@@ -5,14 +5,15 @@
 body {
   font-family: 'Roboto', sans-serif;
   background: #F5F5F5;
-  /*background: image-url('school.png');*/
+  /*background: image-url('school.png') no-repeat;*/
   background: image-url('library3.jpg');
+  background-color: #FFC390;
 }
 
 div#container {
   background: #F0F0F0;
   background: rgba(240,240,240,0.5);
-  background: linear-gradient(to bottom, rgba(255,255,255,0.7),  rgba(200,200,200,0.9));
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7),  rgba(222,222,222,0.9));
   margin: 20px auto;
   max-width: 800px;
   padding: 10px 45px 10px 45px;
@@ -37,8 +38,17 @@ h2 {
   margin: 0;
   padding: 0;
   margin-top: 5px;
-  color: #333333;
-  
+  color: #333333; 
+}
+
+h3 {
+  font-size: 1.25em;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+  /*margin-top: 5px;*/
+  color: #333333;   
 }
 
 a {
@@ -100,9 +110,10 @@ button {
 .story-text {
   display: inline-block;
   min-width: 700px;
+  min-height: 50px;
   font-size: 2.1em;
   padding: 20px 40px;
-  margin: 30px 10px 80px 10px;
+  margin: 30px 10px 60px 10px;
   border: 4px groove #FF2222;
   border-radius: 60px;
   background: #EEEEEE;
