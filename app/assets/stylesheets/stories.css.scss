@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 body {
   font-family: 'Roboto', sans-serif;
   background: #F5F5F5;
@@ -10,6 +13,9 @@ body {
   background-color: #FFC390;
 }
 
+footer {
+  text-align: center;
+}
 div#container {
   background: #F0F0F0;
   background: rgba(240,240,240,0.5);
@@ -130,4 +136,8 @@ button {
   margin-left: 25px;
   font-size: 1.3em;
   text-align: center;
+}
+
+.home-icon {
+  font-size: 2em;
 }
