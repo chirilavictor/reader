@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.1.3"
 
+gem 'newrelic_rpm'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
