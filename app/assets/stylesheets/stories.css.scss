@@ -5,13 +5,14 @@
 body {
   background: #F5F5F5;
   /*background: image-url('school.png');*/
-  background: image-url('congruent_pentagon2.png');
+  background: image-url('library3.jpg');
 }
 
 div#container {
   background: #F0F0F0;
-  background: rgba(255,255,255,0.5);
-  margin: 30px auto;
+  background: rgba(240,240,240,0.5);
+  background: linear-gradient(to bottom, rgba(240,240,240,0.7),  rgba(200,200,200,0.9));
+  margin: 20px auto;
   max-width: 800px;
   padding: 10px 45px 10px 45px;
   border-radius: 75px;  
@@ -26,6 +27,7 @@ h1 {
 h1#title {
   font-family: 'Trade Winds', cursive;
   text-shadow: 4px 3px #000000;
+  margin: 0.5em;
 }
 
 h2 {
@@ -89,7 +91,7 @@ button {
 }
 
 .reading-pane {
-  margin-bottom: 75px;
+  margin-bottom: 50px;
   margin-top: 25px;
   text-align: center;  
 }
