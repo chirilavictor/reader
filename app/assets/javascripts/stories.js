@@ -1,3 +1,5 @@
+var story;
+
 function Story() {
   this.bookmark = 0;
   this.stop = false;
@@ -71,7 +73,6 @@ function autoRead() {
   $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
   $('#stop-story').show();
   $('#start-story').hide();
-  console.log(story)
   story.displayLine();
 }
 
@@ -83,23 +84,30 @@ function stopStory() {
   $('#stop-story').hide();
 }
 
+function returnHome() {
+  story.stop = true;
+}
+
+function setSpeed() {
+  story.delay = parseInt($(this).attr('value'), 10);
+  if (story.delay === 0) { manualRead(); }
+  setBlurb();
+}
+
+function setBlurb() {
+  var animal = $('button[value="' + story.delay +'"]').html();
+  var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
+  $('#speed-choice').html('Current speed: ' + animal);
+  // $('#speed-blurb').html(blurb);
+}
+
 function setListeners() {
     $('#start-story').on("click", startStory);
     $('#stop-story').on("click", stopStory);
     $('#next-line').on("click", nextLine);
     $('#last-line').on("click", lastLine);
-    $('.speed-setting').on("click", function(){
-      story.delay = parseInt($(this).attr('value'), 10);
-      if (story.delay === 0) { manualRead(); }
-      setBlurb();
-    });
-  }
-
-function setBlurb() {
-  var animal = $('button[value="' + story.delay +'"]').html(); 
-  var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
-  $('#speed-choice').html('Current speed: ' + animal)
-  // $('#speed-blurb').html(blurb);
+    $('.speed-setting').on("click", setSpeed);
+    $('#return-home').on("click", returnHome);
 }
 
 $(document).ready(function(){
