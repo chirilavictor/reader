@@ -102,12 +102,12 @@ function setBlurb() {
 }
 
 function setListeners() {
-    $('#start-story').on("click", startStory);
-    $('#stop-story').on("click", stopStory);
-    $('#next-line').on("click", nextLine);
-    $('#last-line').on("click", lastLine);
-    $('.speed-setting').on("click", setSpeed);
-    $('#return-home').on("click", returnHome);
+  $('#start-story').on("click", startStory);
+  $('#stop-story').on("click", stopStory);
+  $('#next-line').on("click", nextLine);
+  $('#last-line').on("click", lastLine);
+  $('.speed-setting').on("click", setSpeed);
+  $('#return-home').on("click", returnHome);
 }
 
 $(document).ready(function(){
