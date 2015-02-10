@@ -1,10 +1,11 @@
+// STORY MODEL
+
 var story;
 
 function Story() {
   this.bookmark = 0;
   this.stop = false;
   this.delay = 2000;
-  this.content = null;
 }
 
 Story.prototype = {
@@ -38,22 +39,32 @@ function getContent() {
 }
 
 
-function nextLine() {
-  story.displayLine();
+// CONTROLLER
+
+function setListeners() {
+  $('#start-story').on("click", startStory);
+  $('#stop-story').on("click", stopStory);
+  $('#next-line').on("click", nextLine);
+  $('#last-line').on("click", lastLine);
+  $('.speed-setting').on("click", setSpeed);
+  $('#return-home').on("click", returnHome);
 }
 
-function lastLine() {
-  if (story.bookmark > 1) {
-    story.bookmark -= 2;
-    story.displayLine();
-  }
+function setSpeed() {
+  story.delay = parseInt($(this).attr('value'), 10);
+  if (story.delay === 0) { manualRead(); }
+  setBlurb();
+}
+
+function setBlurb() {
+  var animal = $('button[value="' + story.delay +'"]').html();
+  var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
+  $('#speed-choice').html('Current speed: ' + animal);
 }
 
 function startStory() {
     $('#title').hide(500, 'linear');
-    // $('.story-text').css({'padding': '80px 40px', 'background': '#FFFFFF'});
     $('.story-text').css({'min-height': '120px', 'padding-top': '60px', 'background': '#FFFFFF'});
-    // $('div#container').css({'background': 'rgba(255,255,255,0.7)'});
     story.stop = false;
     if (story.delay === 0) {
       manualRead();
@@ -63,6 +74,8 @@ function startStory() {
     }
 }
 
+// VIEW
+
 function manualRead() {
   story.stop = true;
   $('.navigation').show();
@@ -70,10 +83,21 @@ function manualRead() {
 }
 
 function autoRead() {
-  $('.navigation').hide(); // ideally this should run only if they are shown -- which would be every time except first...
+  $('.navigation').hide();
   $('#stop-story').show();
   $('#start-story').hide();
   story.displayLine();
+}
+
+function nextLine() {
+  story.displayLine();
+}
+
+function lastLine() {
+  if (story.bookmark > 1) {
+    story.bookmark -= 2;
+    story.displayLine();
+  }
 }
 
 function stopStory() {
@@ -88,27 +112,8 @@ function returnHome() {
   story.stop = true;
 }
 
-function setSpeed() {
-  story.delay = parseInt($(this).attr('value'), 10);
-  if (story.delay === 0) { manualRead(); }
-  setBlurb();
-}
 
-function setBlurb() {
-  var animal = $('button[value="' + story.delay +'"]').html();
-  var blurb = $('button[value="' + story.delay +'"]').attr('data-blurb');
-  $('#speed-choice').html('Current speed: ' + animal);
-  // $('#speed-blurb').html(blurb);
-}
-
-function setListeners() {
-  $('#start-story').on("click", startStory);
-  $('#stop-story').on("click", stopStory);
-  $('#next-line').on("click", nextLine);
-  $('#last-line').on("click", lastLine);
-  $('.speed-setting').on("click", setSpeed);
-  $('#return-home').on("click", returnHome);
-}
+// DOCUMENT READY
 
 $(document).ready(function(){
   story = new Story();
