@@ -1,0 +1,17 @@
+<h1>Speeds#new</h1>
+<p>Find me in app/views/speeds/new.html.erb</p>
+
+<%= form_for(@speed) do |f| %>
+
+    <p><%= f.label :animal %>
+    <%= f.text_field :animal %></p>
+
+    <p><%= f.label :blurb %>
+    <%= f.text_field :blurb %></p>
+
+    <p><%= f.label :delay %>
+    <%= f.text_field :delay %></p>
+
+    <%= f.submit "Creaza viteza" %>
+
+<% end %>
