@@ -5,7 +5,7 @@ class Story < ActiveRecord::Base
     story_lines = []
     while story_words.length > 0
       line = ""
-      while line.length < 40 && story_words.length > 0
+      while line.length < 15 && story_words.length > 0
         line += story_words.shift
         line += " "
       end

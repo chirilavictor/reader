@@ -1,11 +1,9 @@
 
-<h2>Test your reading skill and speed. Choose a story below to begin.</h2>
+<h3>Urmează să ai examen? Copiază mai jos cursurile mai importante ca să le mai parcurgi rapid încă o dată.</h3>
 <br><br>
-
-<% @stories.each do |story| %>
-  <p class="story-list"><%= link_to story.title, story %> -- <%= story.author %></p>
-<% end %>
-
+<div class="reading-pane">
+<%= render 'form' %>
+</div>
 <br>
 <br>
 <br>

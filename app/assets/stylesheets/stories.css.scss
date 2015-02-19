@@ -23,18 +23,18 @@ div#container {
   margin: 20px auto;
   max-width: 800px;
   padding: 10px 45px 10px 45px;
-  border-radius: 75px;  
+  border-radius: 20px;  
 }
 
 h1 {
   text-align: center;
-  color: #FF0000;
+  color: #000000;  /*FF0000*/
   font-size: 4em;
 }
 
 h1#title {
-  font-family: 'Trade Winds', cursive;
-  text-shadow: 4px 3px #000000;
+  font-family: 'Comic Sans'; /*'Trade Winds', cursive;*/
+  /*text-shadow: 4px 3px #000000;*/
   margin: 0.5em;
 }
 
@@ -63,12 +63,12 @@ a {
 }
 
 a:visited {
-  color: #8214FF;
+  color: #000000;
 }
 
 button {
   font-size: 1.1em;
-  border-radius: 15px;
+  border-radius: 10px;
   margin: 5px;
   padding: 10px;
   color: #FFFFFF;
@@ -120,8 +120,8 @@ button {
   font-size: 2.1em;
   padding: 20px 40px;
   margin: 30px 10px 60px 10px;
-  border: 4px groove #FF2222;
-  border-radius: 60px;
+  border: 4px groove #000000;
+  border-radius: 20px;
   background: #EEEEEE;
   -webkit-box-shadow: 5px 5px 5px 5px rgba(170,170,170,1);
   -moz-box-shadow: 5px 5px 5px 5px rgba(170,170,170,1);

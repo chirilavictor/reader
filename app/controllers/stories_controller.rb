@@ -3,6 +3,7 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.all
+    @story = Story.new
   end
 
   def show
@@ -25,7 +26,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to @story, notice: '' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
